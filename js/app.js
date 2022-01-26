@@ -1,20 +1,21 @@
 'use strict';
+//make first letter capital
+// .charAt(0).toUpperCase()+ FullName.substring(1)
 
 let idnumber = 1000;
 function EmployeeInformation(FullName, Department,
-  Level){
-
+  Level,ImageUrl = null){
   this.EmployeeID = id(idnumber);
-  this.FullName = FullName;
+  this.FullName = FullName.charAt(0).toUpperCase()+ FullName.substring(1);
   this.Department = Department;
   this.Level = Level;
-  this.ImagePath = `./pic/${this.FullName}.jpg`;
+  this.ImagePath = ImageUrl ||`https://raw.githubusercontent.com/RaniaAbdullahh/prep-course-py-01/main/Day08/Task/assets/${FullName}.jpg`;
   this.Salary = 0;
 
 }
+// (`./pic/${this.FullName}.jpg`|| ImageUrl)
 
-
-
+// this.ImagePath = `./pic/${this.FullName}.jpg`;
 
 
 EmployeeInformation.prototype.netsalary = function getrandomsalary() {
@@ -56,15 +57,15 @@ EmployeeInformation.prototype.netsalary = function getrandomsalary() {
 
 
 
-const employees = [];
+// const employees = [];
 
-employees.push(new EmployeeInformation('Ghazi Samer', 'Adminstration', 'Senior'));
-employees.push(new EmployeeInformation('Lana Ali',	'Finance','Senior'));
-employees.push(new EmployeeInformation('Tamara Ayoub',	'Marketing','Senior'));
-employees.push(new EmployeeInformation('Safi Walid',	'Administration',	'MidSenior'));
-employees.push(new EmployeeInformation('Omar Zaid'	,'Development'	,'Senior'));
-employees.push(new EmployeeInformation('Rana Saleh',	'Development',	'Junior'));
-employees.push(new EmployeeInformation('Hadi Ahmad'	,'Finance'	,'MidSenior'));
+// employees.push(new EmployeeInformation('Ghazi Samer', 'Adminstration', 'Senior'));
+// employees.push(new EmployeeInformation('Lana Ali',	'Finance','Senior'));
+// employees.push(new EmployeeInformation('Tamara Ayoub',	'Marketing','Senior'));
+// employees.push(new EmployeeInformation('Safi Walid',	'Administration',	'MidSenior'));
+// employees.push(new EmployeeInformation('Omar Zaid'	,'Development'	,'Senior'));
+// employees.push(new EmployeeInformation('Rana Saleh',	'Development',	'Junior'));
+// employees.push(new EmployeeInformation('Hadi Ahmad'	,'Finance'	,'MidSenior'));
 
 
 
@@ -83,12 +84,12 @@ EmployeeInformation.prototype.render = function () {
 
 };
 
-for (let index = 0; index < employees.length; index++) {
-  // employees[index].netsalary;
-  employees[index].netsalary();
-  employees[index].render();
-  console.log(employees[index]);
-}
+// for (let index = 0; index < employees.length; index++) {
+//   // employees[index].netsalary;
+//   employees[index].netsalary();
+//   employees[index].render();
+//   console.log(employees[index]);
+// }
 
 
 
@@ -98,25 +99,30 @@ for (let index = 0; index < employees.length; index++) {
 
 EmployeeInformation.prototype.render = function () {
   let mysection = document.getElementById('cards');
+  mysection.style = 'display: flex; flex-wrap: wrap' ; // adds row at the end of each
   let divEl = document.createElement('div');
   mysection.appendChild(divEl);
   divEl.style = 'padding: 15px; margin:10px; width:180px; height: 1fr; background-color: #7CFC00; display:flex; align-items: center; flex-direction: column';
+
   let imgEl = document.createElement('img');
   divEl.appendChild(imgEl);
   imgEl.setAttribute('src',this.ImagePath);
-  imgEl.style = 'width: 170px; height: 170px';
+  imgEl.style = 'width: 170px; height: 170px; border-radius: 50%';
+
   let p1El = document.createElement('p');
   divEl.appendChild(p1El);
-  p1El.textContent = `Name: ${this.FullName}- ID:${this.EmployeeID}`;
-  p1El.style = ' margin:5px; width:170px;';
+  p1El.textContent = `Name: ${this.FullName}  ID:${this.EmployeeID}`;
+  p1El.style = 'display: flex; margin:5px; width:138px;';
+
   let p2El = document.createElement('p');
   divEl.appendChild(p2El);
-  p2El.textContent = `Department: ${this.Department}-     Level: ${this.Level}`;
-  p2El.style = ' width:170px;';
+  p2El.textContent = `Department: ${this.Department}     Level: ${this.Level}`;
+  p2El.style = ' margin: 0px; display: flex; width:138px;';
+
   let p3El = document.createElement('p');
   divEl.appendChild(p3El);
   p3El.textContent = `Salary: ${this.Salary}`;
-  p3El.style = 'width:170px;';
+  p3El.style = 'width:138px;';
 };
 
 
@@ -136,11 +142,11 @@ function addemployeeform(event){
 
   let FullName = event.target.name.value;
   let Department = event.target.Department.value;
-  this.Level = event.target.level.value;
+  let Level = event.target.level.value;
   let ImageUrl = event.target.ImageUrl.value;
 
   let newemployee = new EmployeeInformation(FullName, Department,
-    this.Level,ImageUrl);
+    Level,ImageUrl);
   newemployee.netsalary();
   newemployee.render();
 

@@ -1,6 +1,6 @@
 'use strict';
 //make first letter capital
-// .charAt(0).toUpperCase()+ FullName.substring(1)
+// .charAt(0).toUpperCase()+ FullName.substring(1) first letter and rest the same
 
 let idnumber = 1000;
 function EmployeeInformation(FullName, Department,
@@ -15,7 +15,8 @@ function EmployeeInformation(FullName, Department,
 }
 // (`./pic/${this.FullName}.jpg`|| ImageUrl)
 
-// this.ImagePath = `./pic/${this.FullName}.jpg`;
+// this.ImagePath = `./pic/${this.FullName}.jpg`; // note
+
 
 
 EmployeeInformation.prototype.netsalary = function getrandomsalary() {

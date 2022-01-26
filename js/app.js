@@ -3,14 +3,16 @@
 // .charAt(0).toUpperCase()+ FullName.substring(1) first letter and rest the same
 
 let idnumber = 1000;
+
 function EmployeeInformation(FullName, Department,
   Level,ImageUrl = null){
   this.EmployeeID = id(idnumber);
-  this.FullName = FullName.charAt(0).toUpperCase()+ FullName.substring(1);
+  this.FullName = FullName;
   this.Department = Department;
   this.Level = Level;
   this.ImagePath = ImageUrl ||`https://raw.githubusercontent.com/RaniaAbdullahh/prep-course-py-01/main/Day08/Task/assets/${FullName}.jpg`;
   this.Salary = 0;
+  EmployeeInformation.allemployees.push(this);
 
 }
 // (`./pic/${this.FullName}.jpg`|| ImageUrl)
@@ -57,16 +59,17 @@ EmployeeInformation.prototype.netsalary = function getrandomsalary() {
 
 
 
+EmployeeInformation.allemployees = [];
 
-// const employees = [];
+const employees = [];
 
-// employees.push(new EmployeeInformation('Ghazi Samer', 'Adminstration', 'Senior'));
-// employees.push(new EmployeeInformation('Lana Ali',	'Finance','Senior'));
-// employees.push(new EmployeeInformation('Tamara Ayoub',	'Marketing','Senior'));
-// employees.push(new EmployeeInformation('Safi Walid',	'Administration',	'MidSenior'));
-// employees.push(new EmployeeInformation('Omar Zaid'	,'Development'	,'Senior'));
-// employees.push(new EmployeeInformation('Rana Saleh',	'Development',	'Junior'));
-// employees.push(new EmployeeInformation('Hadi Ahmad'	,'Finance'	,'MidSenior'));
+employees.push(new EmployeeInformation('Ghazi Samer', 'Adminstration', 'Senior','./pic/Ghazi.jpg'));
+employees.push(new EmployeeInformation('Lana Ali',	'Finance','Senior','./pic/Lana.jpg'));
+employees.push(new EmployeeInformation('Tamara Ayoub',	'Marketing','Senior','./pic/Tamara.jpg'));
+employees.push(new EmployeeInformation('Safi Walid',	'Administration',	'MidSenior','./pic/Safi.jpg'));
+employees.push(new EmployeeInformation('Omar Zaid'	,'Development'	,'Senior','./pic/Omar.jpg'));
+employees.push(new EmployeeInformation('Rana Saleh',	'Development',	'Junior','./pic/Rana.jpg'));
+employees.push(new EmployeeInformation('Hadi Ahmad'	,'Finance'	,'MidSenior','./pic/Hadi.jpg'));
 
 
 
@@ -80,51 +83,60 @@ function id(x) {
 
 
 
-EmployeeInformation.prototype.render = function () {
-  document.write(`<p>${this.FullName} has a salary of ${this.Salary} </p>`);
+// EmployeeInformation.prototype.render = function () {
+//   document.write(`<p>${this.FullName} has a salary of ${this.Salary} </p>`);
 
-};
+// };
 
-// for (let index = 0; index < employees.length; index++) {
-//   // employees[index].netsalary;
-//   employees[index].netsalary();
-//   employees[index].render();
-//   console.log(employees[index]);
-// }
+for (let index = 0; index < employees.length; index++) {
 
-
+  employees[index].netsalary();
+  // employees[index].render();
+  console.log(employees[index]);
+}
 
 
 
 
 
-EmployeeInformation.prototype.render = function () {
-  let mysection = document.getElementById('cards');
-  mysection.style = 'display: flex; flex-wrap: wrap' ; // adds row at the end of each
-  let divEl = document.createElement('div');
-  mysection.appendChild(divEl);
-  divEl.style = 'padding: 15px; margin:10px; width:180px; height: 1fr; background-color: #7CFC00; display:flex; align-items: center; flex-direction: column';
 
-  let imgEl = document.createElement('img');
-  divEl.appendChild(imgEl);
-  imgEl.setAttribute('src',this.ImagePath);
-  imgEl.style = 'width: 170px; height: 170px; border-radius: 50%';
+let mysection = document.getElementById('cards');
 
-  let p1El = document.createElement('p');
-  divEl.appendChild(p1El);
-  p1El.textContent = `Name: ${this.FullName}  ID:${this.EmployeeID}`;
-  p1El.style = 'display: flex; margin:5px; width:138px;';
+function render(){
 
-  let p2El = document.createElement('p');
-  divEl.appendChild(p2El);
-  p2El.textContent = `Department: ${this.Department}     Level: ${this.Level}`;
-  p2El.style = ' margin: 0px; display: flex; width:138px;';
+  for (let i =0 ; i < EmployeeInformation.allemployees.length; i++){
+    let employee = EmployeeInformation.allemployees[i];
 
-  let p3El = document.createElement('p');
-  divEl.appendChild(p3El);
-  p3El.textContent = `Salary: ${this.Salary}`;
-  p3El.style = 'width:138px;';
-};
+
+
+
+    mysection.style = 'display: flex; flex-wrap: wrap' ; // adds row at the end of each
+
+    let divEl = document.createElement('div');
+    mysection.appendChild(divEl);
+    divEl.style = 'padding: 15px; margin:10px; width:180px; height: 1fr; background-color: #7CFC00; display:flex; align-items: center; flex-direction: column';
+
+    let imgEl = document.createElement('img');
+    divEl.appendChild(imgEl);
+    imgEl.setAttribute('src',employee.ImagePath);
+    imgEl.style = 'width: 170px; height: 170px; border-radius: 50%';
+
+    let p1El = document.createElement('p');
+    divEl.appendChild(p1El);
+    p1El.textContent = `Name: ${employee.FullName}  ID:${employee.EmployeeID}`;
+    p1El.style = 'display: flex; margin:5px; width:138px;';
+
+    let p2El = document.createElement('p');
+    divEl.appendChild(p2El);
+    p2El.textContent = `Department: ${employee.Department}     Level: ${employee.Level}`;
+    p2El.style = ' margin: 0px; display: flex; width:138px;';
+
+    let p3El = document.createElement('p');
+    divEl.appendChild(p3El);
+    p3El.textContent = `Salary: ${employee.Salary}`;
+    p3El.style = 'width:138px;';
+
+  }}
 
 
 
@@ -149,8 +161,29 @@ function addemployeeform(event){
   let newemployee = new EmployeeInformation(FullName, Department,
     Level,ImageUrl);
   newemployee.netsalary();
-  newemployee.render();
+  mysection.textContent = '';
+  render();
+  settingitem();
+  // newemployee.render();
 
   console.log(newemployee);
 }
 
+
+function settingitem(){
+  let data = JSON.stringify(EmployeeInformation.allemployees);
+  localStorage.setItem('employees',data);
+
+
+}
+
+function gettingitem() {
+  let stringObj = localStorage.getItem('employees'); /// retrieve employees data from local storage
+  let parsObj = JSON.parse(stringObj);
+  if (parsObj !== null){
+    EmployeeInformation.allemployees = parsObj;
+  }
+  render();
+}
+
+gettingitem();

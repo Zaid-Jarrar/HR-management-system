@@ -1,7 +1,74 @@
-td , tr, th{
-   
-    border-style:double;
-    padding: 10px;
-    font-family: fantasy;
+
+body{
+    font-size: large;
+    background-image: url(https://th.bing.com/th/id/R.c3687cd0375d835d4b38622c6e7172eb?rik=DB8y4Xd80veH0g&riu=http%3a%2f%2fwallpaperheart.com%2fwp-content%2fuploads%2f2018%2f04%2ffree-stock-pictures-s-for-business-hd-wallpaper-professional-background-images-hd.jpg&ehk=XM6KELfDP6QjwkWcivUKj8E9jB3fNLtwEYhSF0ZcFyQ%3d&risl=&pid=ImgRaw&r=0);
+}
+header div {
+
+    margin:0 ;
+    padding: 0;
+    
+  
  
  }
+
+ header div nav {
+  
+    display: flex;
+    font-family: fantasy;}
+ 
+ header div nav ul{
+    
+  
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type:none;
+    display: flex;
+    background-color:  #5800FF;
+    justify-content: space-around;
+    
+    
+ }
+ ul li{
+ 
+    display: block;
+    color: rgb(190, 40, 40);
+    padding: 8px 16px;
+   
+    justify-content: space-between;
+   
+ 
+ }
+ a{
+    
+    text-decoration: none;
+     color: #FFE162 ;
+  }
+ 
+  li:hover{
+ 
+    background-color: rgb(223, 167, 11);
+    color: rgb(214, 211, 16);
+    
+  }
+  
+ 
+ 
+
+
+  footer{
+    
+
+    width: 100%; bottom: 0; left: 0;left:0;bottom: 0;font-family: fantasy;
+  }
+
+  #div{
+
+    display: flex; bottom: 0;float: left;justify-content: center;align-content: flex-start;padding: 0;
+  }
+
+  p{
+
+    padding-left: 100px;
+  }

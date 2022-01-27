@@ -63,7 +63,7 @@ EmployeeInformation.allemployees = [];
 
 const employees = [];
 
-employees.push(new EmployeeInformation('Ghazi Samer', 'Adminstration', 'Senior','./pic/Ghazi.jpg'));
+employees.push(new EmployeeInformation('Ghazi Samer', 'Administration', 'Senior','./pic/Ghazi.jpg'));
 employees.push(new EmployeeInformation('Lana Ali',	'Finance','Senior','./pic/Lana.jpg'));
 employees.push(new EmployeeInformation('Tamara Ayoub',	'Marketing','Senior','./pic/Tamara.jpg'));
 employees.push(new EmployeeInformation('Safi Walid',	'Administration',	'MidSenior','./pic/Safi.jpg'));
@@ -124,17 +124,17 @@ function render(){
     let p1El = document.createElement('p');
     divEl.appendChild(p1El);
     p1El.textContent = `Name: ${employee.FullName}  ID:${employee.EmployeeID}`;
-    p1El.style = 'display: flex; margin:5px; width:138px;';
+    p1El.style = 'padding: 0;display: flex; margin:5px; width:138px;';
 
     let p2El = document.createElement('p');
     divEl.appendChild(p2El);
     p2El.textContent = `Department: ${employee.Department}     Level: ${employee.Level}`;
-    p2El.style = ' margin: 0px; display: flex; width:138px;';
+    p2El.style = 'padding: 0; margin: 0px; display: flex; width:138px;';
 
     let p3El = document.createElement('p');
     divEl.appendChild(p3El);
     p3El.textContent = `Salary: ${employee.Salary}`;
-    p3El.style = 'width:138px;';
+    p3El.style = 'padding: 0;width:138px;';
 
   }}
 
